@@ -10,9 +10,12 @@ spec:
   destination:
     name: in-cluster
     namespace: rayservice
-  sources:
-    - repoURL: https://raw.githubusercontent.com/ray-project/kuberay/v1.4.2/ray-operator/config/samples/ray-service.sample.yaml
-      targetRevision: v1.4.2
+  source:
+    repoURL: https://github.com/ray-project/kuberay.git
+    targetRevision: v1.4.2
+    path: ray-operator/config/samples/
+    directory:
+      recurse: true
   syncPolicy:
     automated:
       prune: true
@@ -20,8 +23,3 @@ spec:
     syncOptions:
       - CreateNamespace=true
       - ApplyOutOfSyncOnly=true
-  ignoreDifferences:
-    - group: argoproj.io
-      kind: Application
-      jsonPointers:
-        - /status
