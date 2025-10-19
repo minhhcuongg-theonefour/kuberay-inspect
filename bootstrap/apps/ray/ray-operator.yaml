@@ -2,7 +2,7 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: kuberay-operator
-  namespace: kuberay-operator
+  namespace: argocd
 spec:
   project: default
   destination:
@@ -10,8 +10,8 @@ spec:
     namespace: kuberay-operator
   sources:
     - repoURL: https://ray-project.github.io/kuberay-helm/
-      targetRevision: v1.4.2
-      chart: kuberay
+      targetRevision: 1.4.2
+      chart: kuberay-operator
       helm:
         releaseName: kuberay-operator
     - repoURL: https://github.com/minhhcuongg-theonefour/kuberay-inspect.git
