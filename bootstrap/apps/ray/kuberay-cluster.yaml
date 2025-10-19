@@ -1,0 +1,33 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: kuberay-cluster
+  namespace: argocd
+  annotations:
+    argocd.argoproj.io/sync-wave: "1"
+spec:
+  project: default
+  destination:
+    name: in-cluster
+    namespace: ray-cluster
+  sources:
+    - repoURL: https://ray-project.github.io/kuberay-helm/
+      targetRevision: 1.4.2
+      chart: ray-cluster
+      helm:
+        releaseName: ray-cluster
+    - repoURL: https://github.com/minhhcuongg-theonefour/kuberay-inspect.git
+      targetRevision: main
+      ref: values
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
+      - ApplyOutOfSyncOnly=true
+  ignoreDifferences:
+    - group: argoproj.io
+      kind: Application
+      jsonPointers:
+        - /status
