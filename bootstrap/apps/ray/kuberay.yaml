@@ -11,7 +11,7 @@ spec:
   sources:
     - repoURL: https://github.com/minhhcuongg-theonefour/kuberay-inspect.git
       targetRevision: main
-      path: experimental/ray/kuberay-operator/overlays/kubeflow
+      path: experimental/ray/kuberay-operator/overlays/standalone
   syncPolicy:
     automated:
       prune: true
