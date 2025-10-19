@@ -1,0 +1,26 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: kuberay
+  namespace: argocd
+spec:
+  project: default
+  destination:
+    name: in-cluster
+    namespace: kuberay
+  sources:
+    - repoURL: https://github.com/minhhcuongg-theonefour/kuberay-inspect.git
+      targetRevision: main
+      path: experimental/ray/kuberay-operator/overlays/kubeflow
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
+      - ApplyOutOfSyncOnly=true
+  ignoreDifferences:
+    - group: argoproj.io
+      kind: Application
+      jsonPointers:
+        - /status
