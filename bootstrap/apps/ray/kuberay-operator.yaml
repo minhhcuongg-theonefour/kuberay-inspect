@@ -16,6 +16,7 @@ spec:
       chart: kuberay-operator
       helm:
         releaseName: kuberay-operator
+        skipCrds: true
   syncPolicy:
     automated:
       prune: true
