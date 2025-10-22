@@ -15,7 +15,7 @@ spec:
       targetRevision: 1.4.2
       chart: ray-cluster
       helm:
-        releaseName: ray-cluster
+        releaseName: raycluster
     - repoURL: https://github.com/minhhcuongg-theonefour/kuberay-inspect.git
       targetRevision: main
       ref: values
@@ -26,6 +26,8 @@ spec:
     syncOptions:
       - CreateNamespace=true
       - ApplyOutOfSyncOnly=true
+      - RespectIgnoreDifferences=true
+      - Replace=true
   ignoreDifferences:
     - group: argoproj.io
       kind: Application
