@@ -16,9 +16,6 @@ spec:
       chart: kuberay-operator
       helm:
         releaseName: kuberay-operator
-    - repoURL: https://github.com/minhhcuongg-theonefour/kuberay-inspect.git
-      targetRevision: main
-      ref: values
   syncPolicy:
     automated:
       prune: true
