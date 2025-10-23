@@ -17,6 +17,11 @@ spec:
       helm:
         releaseName: kuberay-operator
         skipCrds: true
+        valuesObject:
+          metrics:
+            enabled: true
+            selector:
+              release: prometheus
   syncPolicy:
     automated:
       prune: true

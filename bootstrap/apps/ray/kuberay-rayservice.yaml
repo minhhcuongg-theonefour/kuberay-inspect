@@ -13,9 +13,7 @@ spec:
   source:
     repoURL: https://github.com/ray-project/kuberay.git
     targetRevision: v1.4.2
-    path: ray-operator/config/samples/
-    directory:
-      recurse: true
+    path: ray-operator/config/samples/ray-service.sample.yaml
   syncPolicy:
     automated:
       prune: true
